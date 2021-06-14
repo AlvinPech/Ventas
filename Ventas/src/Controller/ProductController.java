@@ -8,6 +8,7 @@ package Controller;
 import View.FrmProduct;
 import Model.Product;
 import Dao.ProductDao;
+import View.FrmInicio;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,12 +26,20 @@ public class ProductController implements ActionListener{
     ProductDao dao = new ProductDao();
     Product product = new Product();
     FrmProduct productView = new FrmProduct();
+    FrmInicio principalView = new FrmInicio();
     DefaultTableModel model = new DefaultTableModel();
+    
     
     public ProductController(FrmProduct view){
        this.productView = view;
        this.productView.listarProductoBtn.addActionListener(this);
        this.productView.guardarProductoBtn.addActionListener(this);
+    }
+    
+    public ProductController(FrmInicio view){
+       this.principalView = view;
+       this.principalView.buscarProd.addActionListener(this);
+       
     }
     
     @Override
@@ -42,8 +51,26 @@ public class ProductController implements ActionListener{
         if(e.getSource() == productView.guardarProductoBtn){
             add();
         }
+        
+        if(e.getSource() == principalView.buscarProd){
+            findProduct();
+        }
     }
     
+    private void findProduct() {
+        String txtId = principalView.prodIdTxt.getText();
+        int dni = Integer.parseInt(txtId);
+        if(txtId.equals("")){
+            JOptionPane.showMessageDialog(principalView, "No deje espacios en blanco");
+        }else{
+            Product prod = dao.findProduct(dni);
+            if(prod.getId() != 0){
+                principalView.prodNomTxt.setText(prod.getNombre());
+            }else{
+                JOptionPane.showMessageDialog(principalView, "Producto no encontrado");
+            }
+        }
+    }
     
     public void list(JTable table){
         model = (DefaultTableModel) table.getModel();
@@ -85,4 +112,6 @@ public class ProductController implements ActionListener{
         productView.precioProductTxt.setText("");
         productView.cantProductTxt.setText("");
     }
+
+   
 }

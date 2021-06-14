@@ -403,6 +403,7 @@ public class FrmInicio extends javax.swing.JFrame {
     public static void main(String args[]) {
         FrmInicio  view = new FrmInicio();
         ClientController controller = new ClientController(view);
+        ProductController productCon = new ProductController(view);
         view.setVisible(true);
     }
 

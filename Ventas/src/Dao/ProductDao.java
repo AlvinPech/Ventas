@@ -21,6 +21,31 @@ public class ProductDao {
     PreparedStatement ps;
     ResultSet rs;
     
+    public Product findProduct(int id){
+        Product product = new Product();
+        String sql = "select * from producto where IdProducto = ?";
+        
+        try{
+            conn  = conect.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                product.setId(rs.getInt(1));
+                product.setNombre(rs.getString(2));
+                product.setPrecio(rs.getDouble(3));
+                product.setCantidad(rs.getInt(4));
+                
+            }
+            
+        } catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        
+        return product;
+    }
+    
     public ArrayList listProduct(){
         ArrayList<Product> data = new ArrayList<>();
         String sql = "select * from producto";
