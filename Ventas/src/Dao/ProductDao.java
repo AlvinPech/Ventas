@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Dao;
 
+import Model.Conexion;
+import Model.Product;
 import java.awt.List;
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class ProductDao {
     
     public ArrayList listProduct(){
         ArrayList<Product> data = new ArrayList<>();
-        String sql = "select * from productos";
+        String sql = "select * from producto";
         try{
             conn = conect.getConexion();
             ps = conn.prepareStatement(sql);
@@ -30,8 +32,8 @@ public class ProductDao {
                 Product product = new Product();
                 product.setId(rs.getInt(1));
                 product.setNombre(rs.getString(2));
-                product.setCantidad(rs.getInt(3));
-                product.setPrecio(rs.getDouble(4));
+                product.setPrecio(rs.getDouble(3));
+                product.setCantidad(rs.getInt(4));
                 
                 data.add(product);
             }
@@ -41,14 +43,14 @@ public class ProductDao {
         return data;
     }
     
-    public int addProduct(Product product){
-        String sql = "insert into productos(nombre, cantidad, precio) values(?,?,?)";
+    public int addProduc(Product product){
+        String sql = "INSERT INTO PRODUCTO(Nombres, Precio, Stock) VALUES(?,?,?)";
         try{
             conn = conect.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, product.getNombre());
-            ps.setInt(2, product.getCantidad());
-            ps.setDouble(3, product.getPrecio());
+            ps.setDouble(2, product.getPrecio());
+            ps.setInt(3, product.getCantidad());
             ps.executeUpdate();
                   
         }catch(Exception e){

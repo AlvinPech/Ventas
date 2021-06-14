@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
     Connection conect = null;
-  static String bd="tienda";
+  static String bd="bd_tienda";
     static String login="root";
     static String password="root";
     static String url="jdbc:mysql://localhost:8889/"+Conexion.bd;

@@ -7,7 +7,7 @@ package Controller;
 
 import View.FrmProduct;
 import Model.Product;
-import Model.ProductDao;
+import Dao.ProductDao;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,13 +69,20 @@ public class ProductController implements ActionListener{
         product.setCantidad(cant);
         product.setPrecio(price);
         
-        int response = dao.addProduct(product);
+        int response = dao.addProduc(product);
         
         if(response == 1){
             JOptionPane.showMessageDialog(productView, "Usuario agregado con exito");
         }else{
             JOptionPane.showMessageDialog(productView, "Error de agregacion");
         }
-         
+        
+        //cleanField();
+    }
+    
+    public void cleanField(){
+        productView.nomProductTxt.setText("");
+        productView.precioProductTxt.setText("");
+        productView.cantProductTxt.setText("");
     }
 }
