@@ -1,3 +1,5 @@
+package Model;
+
 
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -19,7 +21,7 @@ public class Conexion {
     static String password="root";
     static String url="jdbc:mysql://localhost:8889/"+Conexion.bd;
     
-   public Connection Conexion()
+   public Connection getConexion()
     {
       try {
            
