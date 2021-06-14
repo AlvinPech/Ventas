@@ -12,6 +12,7 @@ import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +30,7 @@ public class ProductController implements ActionListener{
     public ProductController(FrmProduct view){
        this.productView = view;
        this.productView.listarProductoBtn.addActionListener(this);
+       this.productView.guardarProductoBtn.addActionListener(this);
     }
     
     @Override
@@ -37,6 +39,9 @@ public class ProductController implements ActionListener{
             list(productView.jTable1);
         }
         
+        if(e.getSource() == productView.guardarProductoBtn){
+            add();
+        }
     }
     
     
@@ -53,5 +58,24 @@ public class ProductController implements ActionListener{
         }
         
         productView.jTable1.setModel(model);
+    }
+    
+    public void add(){
+        String name = productView.nomProductTxt.getText();
+        int cant = Integer.parseInt(productView.cantProductTxt.getText());
+        double price = Double.parseDouble(productView.precioProductTxt.getText());
+        
+        product.setNombre(name);
+        product.setCantidad(cant);
+        product.setPrecio(price);
+        
+        int response = dao.addProduct(product);
+        
+        if(response == 1){
+            JOptionPane.showMessageDialog(productView, "Usuario agregado con exito");
+        }else{
+            JOptionPane.showMessageDialog(productView, "Error de agregacion");
+        }
+         
     }
 }

@@ -156,6 +156,9 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="idProductTxt1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -172,7 +175,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="guardarProductoBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Guardar"/>
+            <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

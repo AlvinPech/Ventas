@@ -57,7 +57,9 @@ public class FrmProduct extends javax.swing.JFrame {
 
         jLabel4.setText("Precio");
 
-        guardarProductoBtn.setText("Guardar");
+        idProductTxt1.setEditable(false);
+
+        guardarProductoBtn.setText("Agregar");
 
         listarProductoBtn.setText("Listar");
         listarProductoBtn.addActionListener(new java.awt.event.ActionListener() {

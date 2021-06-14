@@ -40,4 +40,21 @@ public class ProductDao {
         }
         return data;
     }
+    
+    public int addProduct(Product product){
+        String sql = "insert into productos(nombre, cantidad, precio) values(?,?,?)";
+        try{
+            conn = conect.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, product.getNombre());
+            ps.setInt(2, product.getCantidad());
+            ps.setDouble(3, product.getPrecio());
+            ps.executeUpdate();
+                  
+        }catch(Exception e){
+            System.out.println(""+e);
+        }
+        
+        return 1;
+    }
 }
