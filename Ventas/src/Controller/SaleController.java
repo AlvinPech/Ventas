@@ -25,6 +25,7 @@ public class SaleController implements ActionListener{
     public SaleController(FrmInicio view){
        this.view = view;
        this.view.generateSaleBtn.addActionListener(this);
+       
     }
 
     @Override

@@ -4,6 +4,7 @@ package View;
 import Controller.ClientController;
 import Controller.ProductController;
 import Controller.SaleController;
+import Dao.SaleDao;
 import Model.Conexion;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -25,10 +26,11 @@ public class FrmInicio extends javax.swing.JFrame {
      */
     
     Conexion conexion;
+    SaleDao dao = new SaleDao();
     public FrmInicio() {
         initComponents();
-        Calendar calendar = new GregorianCalendar();
-        dateTxt.setText(""+calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.DAY_OF_MONTH));
+        getCalendar();
+        getSerie();
     }
 
     /**
@@ -475,4 +477,22 @@ public class FrmInicio extends javax.swing.JFrame {
     public javax.swing.JTable tablaProdVenta;
     public javax.swing.JTextField totalTxt;
     // End of variables declaration//GEN-END:variables
+
+    private void getCalendar() {
+        Calendar calendar = new GregorianCalendar();
+        dateTxt.setText(""+calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.DAY_OF_MONTH));
+    
+    }
+
+    private void getSerie() {
+        String serie = dao.NumSerie();
+        if(serie.equals("")){
+            serieTxt.setText("01");
+            
+        }else{
+            int increment = Integer.parseInt(serie);
+            increment = increment + 1;
+            serieTxt.setText("0"+increment);
+        }
+    }
 }

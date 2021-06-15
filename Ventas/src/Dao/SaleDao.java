@@ -23,6 +23,24 @@ public class SaleDao {
     ResultSet rs;
     int response = 0;
     
+    public String NumSerie(){
+        String serie = "";
+        String sql = "select max(NumeroSerie) from ventas";
+        try{
+            conn = conect.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                serie  = rs.getString(1);
+            }
+        }catch(Exception e){
+            
+        }
+        
+        return serie;
+    }
+    
     public String getIdSale(){
         String idSale = "";
         String sql = "select max(IdVentas) from ventas";
