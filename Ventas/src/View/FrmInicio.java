@@ -3,7 +3,10 @@ package View;
 
 import Controller.ClientController;
 import Controller.ProductController;
+import Controller.SaleController;
 import Model.Conexion;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,6 +27,8 @@ public class FrmInicio extends javax.swing.JFrame {
     Conexion conexion;
     public FrmInicio() {
         initComponents();
+        Calendar calendar = new GregorianCalendar();
+        dateTxt.setText(""+calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     /**
@@ -41,7 +46,8 @@ public class FrmInicio extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        dateTxt = new javax.swing.JTextField();
+        serieTxt = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         prodIdTxt = new javax.swing.JTextField();
@@ -63,9 +69,10 @@ public class FrmInicio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProdVenta = new javax.swing.JTable();
         clienteLb = new javax.swing.JLabel();
+        idClientTxt = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        generateSaleBtn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         totalTxt = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -112,12 +119,17 @@ public class FrmInicio extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(160, 160, 160)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(160, 160, 160)
+                        .addComponent(dateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(serieTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(314, 314, 314))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +137,10 @@ public class FrmInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(dateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(serieTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
@@ -257,7 +271,7 @@ public class FrmInicio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NUMERO", "NOMBRE", "CANTIDAD", "PRECIO UNITARIO", "COSTO"
+                "NUMERO", "CODIGO", "NOMBRE", "CANTIDAD", "PRECIO UNITARIO", "COSTO"
             }
         ));
         jScrollPane1.setViewportView(tablaProdVenta);
@@ -270,20 +284,23 @@ public class FrmInicio extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(clienteLb)
-                        .addGap(182, 182, 182))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(216, 216, 216)
+                .addComponent(clienteLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(idClientTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(clienteLb)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clienteLb)
+                    .addComponent(idClientTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(196, 196, 196))
         );
@@ -292,7 +309,7 @@ public class FrmInicio extends javax.swing.JFrame {
 
         jButton1.setText("CANCELAR");
 
-        jButton2.setText("PAGAR");
+        generateSaleBtn.setText("PAGAR");
 
         jLabel7.setText("TOTAL A PAGAR");
 
@@ -304,7 +321,7 @@ public class FrmInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(generateSaleBtn)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -317,7 +334,7 @@ public class FrmInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(generateSaleBtn)
                     .addComponent(jLabel7)
                     .addComponent(totalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -386,7 +403,7 @@ public class FrmInicio extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -410,6 +427,7 @@ public class FrmInicio extends javax.swing.JFrame {
     public static void main(String args[]) {
         FrmInicio  view = new FrmInicio();
         ClientController controller = new ClientController(view);
+        SaleController saleCon = new SaleController(view);
         ProductController productCon = new ProductController(view);
         view.setVisible(true);
     }
@@ -425,8 +443,10 @@ public class FrmInicio extends javax.swing.JFrame {
     public javax.swing.JTextField clientIdTxt;
     public javax.swing.JTextField clientNomTxt;
     public javax.swing.JLabel clienteLb;
+    public javax.swing.JTextField dateTxt;
+    public javax.swing.JButton generateSaleBtn;
+    public javax.swing.JTextField idClientTxt;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -448,10 +468,10 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
     public javax.swing.JTextField prodIdTxt;
     public javax.swing.JTextField prodNomTxt;
     public javax.swing.JToggleButton quitarProd;
+    public javax.swing.JTextField serieTxt;
     public javax.swing.JTable tablaProdVenta;
     public javax.swing.JTextField totalTxt;
     // End of variables declaration//GEN-END:variables

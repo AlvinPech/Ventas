@@ -69,6 +69,7 @@ public class ProductController implements ActionListener{
     private void addTableProduct(){
         
         model = (DefaultTableModel) principalView.tablaProdVenta.getModel();
+        int idProd = foundProduct.getId();
         String prodName = foundProduct.getNombre();
         double prodPrice = foundProduct.getPrecio();
         int cantProd = Integer.parseInt(principalView.cantidadNum.getValue().toString());
@@ -80,16 +81,18 @@ public class ProductController implements ActionListener{
         if(stock > 0){
             item = item + 1;
             list.add(item);
+            list.add(idProd);
             list.add(prodName);
             list.add(cantProd);
             list.add(prodPrice);
             list.add(total);
-            Object[] ob = new Object[5];
+            Object[] ob = new Object[6];
             ob[0] = list.get(0);
             ob[1] = list.get(1);
             ob[2] = list.get(2);
             ob[3] = list.get(3);
             ob[4] = list.get(4);
+            ob[5] = list.get(5);
             model.addRow(ob);
             principalView.tablaProdVenta.setModel(model);
             calculateTotal();
@@ -101,7 +104,7 @@ public class ProductController implements ActionListener{
     private void calculateTotal(){
         totalPagar = 0;
         for(int i = 0; i < model.getRowCount(); i++){
-            total = Double.parseDouble(model.getValueAt(i, 4).toString());
+            total = Double.parseDouble(model.getValueAt(i, 5).toString());
             totalPagar = totalPagar + total;
         }
         principalView.totalTxt.setText(""+totalPagar);

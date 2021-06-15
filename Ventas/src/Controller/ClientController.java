@@ -44,6 +44,7 @@ public class ClientController implements ActionListener{
             Client client = dao.findClient(dni);
             if(client.getDni() != null){
                 view.clientNomTxt.setText(client.getNombres());
+                view.idClientTxt.setText(""+client.getIdCliente());
             }
         }
         
