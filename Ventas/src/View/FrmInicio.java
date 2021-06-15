@@ -484,7 +484,7 @@ public class FrmInicio extends javax.swing.JFrame {
     
     }
 
-    private void getSerie() {
+    public void getSerie() {
         String serie = dao.NumSerie();
         if(serie.equals("")){
             serieTxt.setText("01");

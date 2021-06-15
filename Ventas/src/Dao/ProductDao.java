@@ -20,6 +20,7 @@ public class ProductDao {
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
+    int response;
     
     public Product findProduct(int id){
         Product product = new Product();
@@ -44,6 +45,22 @@ public class ProductDao {
         }
         
         return product;
+    }
+    
+    public int updateStock(int cant, int idProd){
+        String sql = "update producto set Stock = ? where idProducto = ?";
+        
+        try{
+            conn = conect.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, cant);
+            ps.setInt(2, idProd);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }
+        
+        return response;
     }
     
     public ArrayList listProduct(){
