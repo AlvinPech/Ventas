@@ -25,9 +25,13 @@ public class ProductController implements ActionListener{
 
     ProductDao dao = new ProductDao();
     Product product = new Product();
+    Product foundProduct = new Product();
     FrmProduct productView = new FrmProduct();
     FrmInicio principalView = new FrmInicio();
     DefaultTableModel model = new DefaultTableModel();
+    int item = 0;
+    double totalPagar;
+    double total;
     
     
     public ProductController(FrmProduct view){
@@ -39,6 +43,7 @@ public class ProductController implements ActionListener{
     public ProductController(FrmInicio view){
        this.principalView = view;
        this.principalView.buscarProd.addActionListener(this);
+       this.principalView.AgregarProd.addActionListener(this);
        
     }
     
@@ -55,6 +60,51 @@ public class ProductController implements ActionListener{
         if(e.getSource() == principalView.buscarProd){
             findProduct();
         }
+        
+        if(e.getSource() == principalView.AgregarProd){
+            addTableProduct();
+        }
+    }
+    
+    private void addTableProduct(){
+        
+        model = (DefaultTableModel) principalView.tablaProdVenta.getModel();
+        String prodName = foundProduct.getNombre();
+        double prodPrice = foundProduct.getPrecio();
+        int cantProd = Integer.parseInt(principalView.cantidadNum.getValue().toString());
+        int stock = foundProduct.getCantidad();
+        total = cantProd * prodPrice;
+        
+        ArrayList list = new ArrayList();
+        
+        if(stock > 0){
+            item = item + 1;
+            list.add(item);
+            list.add(prodName);
+            list.add(cantProd);
+            list.add(prodPrice);
+            list.add(total);
+            Object[] ob = new Object[5];
+            ob[0] = list.get(0);
+            ob[1] = list.get(1);
+            ob[2] = list.get(2);
+            ob[3] = list.get(3);
+            ob[4] = list.get(4);
+            model.addRow(ob);
+            principalView.tablaProdVenta.setModel(model);
+            calculateTotal();
+        }else{
+            JOptionPane.showMessageDialog(principalView, "El stock llego a cero");            
+        }
+    }
+    
+    private void calculateTotal(){
+        totalPagar = 0;
+        for(int i = 0; i < model.getRowCount(); i++){
+            total = Double.parseDouble(model.getValueAt(i, 4).toString());
+            totalPagar = totalPagar + total;
+        }
+        principalView.totalTxt.setText(""+totalPagar);
     }
     
     private void findProduct() {
@@ -64,12 +114,15 @@ public class ProductController implements ActionListener{
             JOptionPane.showMessageDialog(principalView, "No deje espacios en blanco");
         }else{
             Product prod = dao.findProduct(dni);
+            foundProduct = prod;
             if(prod.getId() != 0){
                 principalView.prodNomTxt.setText(prod.getNombre());
             }else{
                 JOptionPane.showMessageDialog(principalView, "Producto no encontrado");
             }
         }
+        
+        
     }
     
     public void list(JTable table){
@@ -99,7 +152,7 @@ public class ProductController implements ActionListener{
         int response = dao.addProduc(product);
         
         if(response == 1){
-            JOptionPane.showMessageDialog(productView, "Usuario agregado con exito");
+            JOptionPane.showMessageDialog(productView, "Producto agregado con exito");
         }else{
             JOptionPane.showMessageDialog(productView, "Error de agregacion");
         }
