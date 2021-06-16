@@ -80,6 +80,7 @@ public class FrmInicio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         addClient = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -344,12 +345,20 @@ public class FrmInicio extends javax.swing.JFrame {
 
         jMenu1.setText("Sistema");
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setText("Venta del dia");
         jMenu1.add(jMenuItem2);
+
+        jMenuItem1.setText("Terminar turno");
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
         addClient.setText("Cliente");
+        addClient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addClientMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(addClient);
 
         jMenu3.setText("Proveedores");
@@ -423,6 +432,13 @@ public class FrmInicio extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_jMenu4MouseClicked
 
+    private void addClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addClientMouseClicked
+        // TODO add your handling code here:
+        FrmClient  view = new FrmClient();
+        ClientController controller = new ClientController(view);
+        view.setVisible(true);
+    }//GEN-LAST:event_addClientMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -459,6 +475,7 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
