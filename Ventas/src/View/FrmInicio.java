@@ -4,6 +4,7 @@ package View;
 import Controller.ClientController;
 import Controller.ProductController;
 import Controller.SaleController;
+import Controller.VendorController;
 import Dao.SaleDao;
 import Model.Conexion;
 import java.util.Calendar;
@@ -82,7 +83,7 @@ public class FrmInicio extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         addClient = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        vendorJMenu = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem4.setText("jMenuItem4");
@@ -361,8 +362,13 @@ public class FrmInicio extends javax.swing.JFrame {
         });
         jMenuBar1.add(addClient);
 
-        jMenu3.setText("Proveedores");
-        jMenuBar1.add(jMenu3);
+        vendorJMenu.setText("Proveedores");
+        vendorJMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vendorJMenuMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(vendorJMenu);
 
         jMenu4.setText("Producto");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -439,6 +445,13 @@ public class FrmInicio extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_addClientMouseClicked
 
+    private void vendorJMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendorJMenuMouseClicked
+        // TODO add your handling code here:
+        FrmVendor view = new FrmVendor();
+        VendorController controller = new VendorController(view);
+        view.setVisible(true);
+    }//GEN-LAST:event_vendorJMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -472,7 +485,6 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -493,6 +505,7 @@ public class FrmInicio extends javax.swing.JFrame {
     public javax.swing.JTextField serieTxt;
     public javax.swing.JTable tablaProdVenta;
     public javax.swing.JTextField totalTxt;
+    private javax.swing.JMenu vendorJMenu;
     // End of variables declaration//GEN-END:variables
 
     private void getCalendar() {
