@@ -47,8 +47,8 @@ public class SaleController implements ActionListener{
         String date = view.dateTxt.getText();
         double amount = Double.parseDouble(view.totalTxt.getText());
         
-        sale.setIdClient(idSale);
-        sale.setIdUser(idClient);
+        sale.setIdClient(idClient);
+        sale.setIdUser(idSale);
         sale.setNumSer(serie);
         sale.setDate(date);
         sale.setAmount(amount);
@@ -107,6 +107,7 @@ public class SaleController implements ActionListener{
         view.idClientTxt.setText("");
         view.prodIdTxt.setText("");
         view.prodNomTxt.setText("");
+        view.totalTxt.setText("");
         
         cleanTable();
     }

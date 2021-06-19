@@ -4,6 +4,7 @@ package View;
 import Controller.ClientController;
 import Controller.ProductController;
 import Controller.SaleController;
+import Controller.SaleInfoController;
 import Controller.VendorController;
 import Dao.SaleDao;
 import Model.Conexion;
@@ -84,6 +85,8 @@ public class FrmInicio extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         addClient = new javax.swing.JMenu();
         vendorJMenu = new javax.swing.JMenu();
+        addVendorItem = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem4.setText("jMenuItem4");
@@ -346,7 +349,17 @@ public class FrmInicio extends javax.swing.JFrame {
 
         jMenu1.setText("Sistema");
 
-        jMenuItem2.setText("Venta del dia");
+        jMenuItem2.setText("Ver ventas");
+        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem2MouseClicked(evt);
+            }
+        });
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem1.setText("Terminar turno");
@@ -368,6 +381,18 @@ public class FrmInicio extends javax.swing.JFrame {
                 vendorJMenuMouseClicked(evt);
             }
         });
+
+        addVendorItem.setText("Agregar");
+        addVendorItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVendorItemActionPerformed(evt);
+            }
+        });
+        vendorJMenu.add(addVendorItem);
+
+        jMenuItem3.setText("Comprar");
+        vendorJMenu.add(jMenuItem3);
+
         jMenuBar1.add(vendorJMenu);
 
         jMenu4.setText("Producto");
@@ -447,10 +472,27 @@ public class FrmInicio extends javax.swing.JFrame {
 
     private void vendorJMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendorJMenuMouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_vendorJMenuMouseClicked
+
+    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItem2MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        FrmSaleInfo view = new FrmSaleInfo();
+        SaleInfoController controller = new SaleInfoController(view);
+        view.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void addVendorItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVendorItemActionPerformed
+        // TODO add your handling code here:
         FrmVendor view = new FrmVendor();
         VendorController controller = new VendorController(view);
         view.setVisible(true);
-    }//GEN-LAST:event_vendorJMenuMouseClicked
+    }//GEN-LAST:event_addVendorItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -468,6 +510,7 @@ public class FrmInicio extends javax.swing.JFrame {
     public javax.swing.JButton AgregarProd;
     public javax.swing.JToggleButton QuitarClient;
     private javax.swing.JMenu addClient;
+    private javax.swing.JMenuItem addVendorItem;
     public javax.swing.JButton buscarClient;
     public javax.swing.JButton buscarProd;
     public javax.swing.JSpinner cantidadNum;
@@ -489,6 +532,7 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
@@ -516,7 +560,7 @@ public class FrmInicio extends javax.swing.JFrame {
 
     public void getSerie() {
         String serie = dao.NumSerie();
-        if(serie.equals("")){
+        if(serie == null){
             serieTxt.setText("01");
             
         }else{

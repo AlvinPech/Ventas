@@ -35,7 +35,7 @@ public class SaleDao {
                 serie  = rs.getString(1);
             }
         }catch(Exception e){
-            
+            System.out.println(""+e);
         }
         
         return serie;
@@ -60,6 +60,7 @@ public class SaleDao {
     }
     
     public int saveSale(Sale s){
+        System.out.println("Guardar venta");
         Sale sale = new Sale();
         String sql = "insert into ventas(IdCliente, IdVendedor, NumeroSerie, FechaVentas, Monto) values(?,?,?,?,?)";
         

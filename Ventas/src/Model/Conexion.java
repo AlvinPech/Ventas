@@ -28,7 +28,7 @@ public class Conexion {
            //Cargamos el Driver MySQL
            Class.forName("com.mysql.cj.jdbc.Driver");
            conect = DriverManager.getConnection(url,login,password);
-           System.out.print("Se ha establecido una conexión a la Base de Datos "+url+" "+login +" \n");
+           //System.out.print("Se ha establecido una conexión a la Base de Datos "+url+" "+login +" \n");
            //Cargamos el Driver Access
            //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
            //Conectar en red base 
