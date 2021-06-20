@@ -3,6 +3,7 @@ package View;
 
 import Controller.ClientController;
 import Controller.ProductController;
+import Controller.ProfitsController;
 import Controller.SaleController;
 import Controller.SaleInfoController;
 import Controller.VendorController;
@@ -80,6 +81,7 @@ public class FrmInicio extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         totalTxt = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -347,9 +349,12 @@ public class FrmInicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Sistema");
+        jMenu2.setText("Sistema");
+        jMenuBar1.add(jMenu2);
 
-        jMenuItem2.setText("Ver ventas");
+        jMenu1.setText("Ventas");
+
+        jMenuItem2.setText("Ventas realizadas");
         jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem2MouseClicked(evt);
@@ -362,7 +367,12 @@ public class FrmInicio extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem1.setText("Terminar turno");
+        jMenuItem1.setText("Utilidad semanal");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -494,6 +504,13 @@ public class FrmInicio extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_addVendorItemActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FrmProfits view = new FrmProfits();
+        ProfitsController controller = new ProfitsController(view);
+        view.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -502,6 +519,7 @@ public class FrmInicio extends javax.swing.JFrame {
         ClientController controller = new ClientController(view);
         SaleController saleCon = new SaleController(view);
         ProductController productCon = new ProductController(view);
+        SaleInfoController infoSale = new SaleInfoController(view);
         view.setVisible(true);
     }
 
@@ -528,6 +546,7 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -552,7 +571,7 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JMenu vendorJMenu;
     // End of variables declaration//GEN-END:variables
 
-    private void getCalendar() {
+    public void getCalendar() {
         Calendar calendar = new GregorianCalendar();
         dateTxt.setText(""+calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.DAY_OF_MONTH));
     

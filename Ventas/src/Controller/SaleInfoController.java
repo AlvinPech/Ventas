@@ -7,6 +7,7 @@ package Controller;
 
 import Dao.SaleInfoDao;
 import Model.Sale;
+import View.FrmInicio;
 import View.FrmSaleInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SaleInfoController implements ActionListener {
     FrmSaleInfo infoView = new FrmSaleInfo();
+    FrmInicio principalView = new FrmInicio();
     SaleInfoDao dao = new SaleInfoDao();
     DefaultTableModel model = new DefaultTableModel();
     double totalAmount;
@@ -28,13 +30,27 @@ public class SaleInfoController implements ActionListener {
     public SaleInfoController(FrmSaleInfo view){
         this.infoView = view;
         this.infoView.findSaleBtn.addActionListener(this);
+        this.infoView.todaySaleBtn.addActionListener(this);
         listDates();
+    }
+    
+    public SaleInfoController(FrmInicio view){
+        this.principalView = view;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == infoView.findSaleBtn){
-            listSales(infoView.saleTable);
+            String firstDate = infoView.fromCombo.getSelectedItem().toString();
+            String secondDate = infoView.toCombo.getSelectedItem().toString();
+            listSale(infoView.saleTable, firstDate, secondDate);
+            calculateTotal();
+        }
+        
+        if(e.getSource() == infoView.todaySaleBtn){
+            String firstDate = principalView.dateTxt.getText();
+            String secondDate = principalView.dateTxt.getText();
+            listSale(infoView.saleTable, firstDate, secondDate);
             calculateTotal();
         }
         
@@ -48,10 +64,10 @@ public class SaleInfoController implements ActionListener {
         }
     }
 
-    private void listSales(JTable saleTable) {
+    private void listSale(JTable saleTable, String firstDate, String secondDate) {
+
         model = (DefaultTableModel) saleTable.getModel();
-        String firstDate = infoView.fromCombo.getSelectedItem().toString();
-        String secondDate = infoView.toCombo.getSelectedItem().toString();
+        
         ArrayList<Sale> listData = dao.listRangeSale(firstDate, secondDate);
         Object[] object = new Object[5];
         for(int i = 0; i < listData.size(); i++){
