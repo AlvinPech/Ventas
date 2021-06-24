@@ -8,7 +8,7 @@ package Controller;
 import View.FrmProduct;
 import Model.Product;
 import Dao.ProductDao;
-import View.FrmInicio;
+import View.FrmPrincipalView;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +27,7 @@ public class ProductController implements ActionListener{
     Product product = new Product();
     Product foundProduct = new Product();
     FrmProduct productView = new FrmProduct();
-    FrmInicio principalView = new FrmInicio();
+    FrmPrincipalView principalView = new FrmPrincipalView();
     DefaultTableModel model = new DefaultTableModel();
     int item = 0;
     double totalPagar;
@@ -40,7 +40,7 @@ public class ProductController implements ActionListener{
        this.productView.guardarProductoBtn.addActionListener(this);
     }
     
-    public ProductController(FrmInicio view){
+    public ProductController(FrmPrincipalView view){
        this.principalView = view;
        this.principalView.buscarProd.addActionListener(this);
        this.principalView.AgregarProd.addActionListener(this);
@@ -62,7 +62,32 @@ public class ProductController implements ActionListener{
         }
         
         if(e.getSource() == principalView.AgregarProd){
+            validateNotZero();
+            
+        }
+    }
+    
+    private void cleanFielTable(){
+        productView.cantProductTxt.setText("");
+        productView.idProductTxt1.setText("");
+        productView.nomProductTxt.setText("");
+        productView.precioProductTxt.setText("");
+        
+        model = (DefaultTableModel) productView.jTable1.getModel();
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            model.removeRow(i);
+            i = i - 1;
+        }
+        
+    }
+    
+    private void validateNotZero(){
+        int cantidadSpinner = Integer.parseInt(principalView.cantidadNum.getValue().toString());
+        if(cantidadSpinner > 0){
             addTableProduct();
+        }else{
+            JOptionPane.showMessageDialog(principalView, "No agregue 0 productos a la venta");            
         }
     }
     
@@ -99,6 +124,9 @@ public class ProductController implements ActionListener{
         }else{
             JOptionPane.showMessageDialog(principalView, "El stock llego a cero");            
         }
+        
+        principalView.prodIdTxt.setText("");
+        principalView.prodNomTxt.setText("");
     }
     
     private void calculateTotal(){
@@ -112,23 +140,45 @@ public class ProductController implements ActionListener{
     
     private void findProduct() {
         String txtId = principalView.prodIdTxt.getText();
-        int dni = Integer.parseInt(txtId);
+        int dni = 0;
         if(txtId.equals("")){
             JOptionPane.showMessageDialog(principalView, "No deje espacios en blanco");
         }else{
-            Product prod = dao.findProduct(dni);
-            foundProduct = prod;
-            if(prod.getId() != 0){
-                principalView.prodNomTxt.setText(prod.getNombre());
-            }else{
-                JOptionPane.showMessageDialog(principalView, "Producto no encontrado");
-            }
+            validateString(dni, txtId);
+        }   
+    }
+    
+    public void validateString(int dni, String txtId){
+        if(isNumeric(txtId)){
+            dni = Integer.parseInt(txtId);
+            findDni(dni, txtId);
+        }else{
+            JOptionPane.showMessageDialog(principalView, "Ingrese solo valores numericos");
         }
-        
-        
+    }
+    
+    public void findDni(int dni, String txtId){
+        Product prod = dao.findProduct(dni);
+        foundProduct = prod;
+        if(prod.getId() == 0){
+            System.out.println("No se encuentra");
+            JOptionPane.showMessageDialog(principalView, "Producto no encontrado");
+        }else{
+            principalView.prodNomTxt.setText(prod.getNombre());
+        }
+    }
+    
+    private static boolean isNumeric(String cadena){
+    	try {
+    		Integer.parseInt(cadena);
+    		return true;
+    	} catch (NumberFormatException nfe){
+    		return false;
+    	}
     }
     
     public void list(JTable table){
+        cleanFielTable();
         model = (DefaultTableModel) table.getModel();
         ArrayList<Product> listData = dao.listProduct();
         Object[] object = new Object[4];
@@ -145,19 +195,26 @@ public class ProductController implements ActionListener{
     
     public void add(){
         String name = productView.nomProductTxt.getText();
-        int cant = Integer.parseInt(productView.cantProductTxt.getText());
-        double price = Double.parseDouble(productView.precioProductTxt.getText());
+        String strCantidadProduct = productView.cantProductTxt.getText();
+        String strPriceProduct = productView.precioProductTxt.getText();
         
-        product.setNombre(name);
-        product.setCantidad(cant);
-        product.setPrecio(price);
-        
-        int response = dao.addProduc(product);
-        
-        if(response == 1){
-            JOptionPane.showMessageDialog(productView, "Producto agregado con exito");
+        if(name.equals("") || strCantidadProduct.equals("") || strPriceProduct.equals("") ){
+            JOptionPane.showMessageDialog(productView, "No deje espacios en blanco");
         }else{
-            JOptionPane.showMessageDialog(productView, "Error de agregacion");
+            int cant = Integer.parseInt(strCantidadProduct);
+            double price = Double.parseDouble(strPriceProduct);
+            product.setNombre(name);
+            product.setCantidad(cant);
+            product.setPrecio(price);
+
+            int response = dao.addProduc(product);
+
+            if(response == 1){
+                JOptionPane.showMessageDialog(productView, "Producto agregado con exito");
+                cleanFielTable();
+            }else{
+                JOptionPane.showMessageDialog(productView, "Error de agregacion");
+            }
         }
         
         //cleanField();

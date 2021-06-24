@@ -8,7 +8,7 @@ package Controller;
 import Dao.ProfitsDao;
 import Model.Purchase;
 import Model.Sale;
-import View.FrmInicio;
+import View.FrmPrincipalView;
 import View.FrmProfits;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class ProfitsController implements ActionListener {
     ProfitsDao dao = new ProfitsDao();
     FrmProfits profitsView = new FrmProfits();
-    FrmInicio principalView = new FrmInicio();
+    FrmPrincipalView principalView = new FrmPrincipalView();
     DefaultTableModel model = new DefaultTableModel();
     DefaultTableModel modelPurchase = new DefaultTableModel();
     double totalAmountSale;
@@ -41,6 +41,7 @@ public class ProfitsController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == profitsView.findDateBtn){
+            cleanFieldTable();
             String firstDate = profitsView.fromTxt.getText();
             String secondDate = profitsView.toTxt.getText();
             listSale(profitsView.saleTable, firstDate, secondDate);
@@ -114,5 +115,23 @@ public class ProfitsController implements ActionListener {
         
         
         
+    }
+
+    private void cleanFieldTable() {
+        //Clean purchase table
+        model = (DefaultTableModel) profitsView.purchaseTable.getModel();
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            model.removeRow(i);
+            i = i - 1;
+        }
+        
+        //Clean sales table
+        model = (DefaultTableModel) profitsView.saleTable.getModel();
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            model.removeRow(i);
+            i = i - 1;
+        }
     }
 }
