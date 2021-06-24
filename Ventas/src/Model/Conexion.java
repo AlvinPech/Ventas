@@ -39,6 +39,7 @@ public class Conexion {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error "+e);
         }
+        System.out.println(""+conect);
         return conect;
       }
    public void cerrar(){

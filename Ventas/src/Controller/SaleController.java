@@ -10,7 +10,7 @@ import Dao.SaleDao;
 import Model.DetailSale;
 import Model.Product;
 import Model.Sale;
-import View.FrmInicio;
+import View.FrmPrincipalView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -41,13 +41,14 @@ import javax.swing.table.DefaultTableModel;
 public class SaleController implements ActionListener{
     Sale sale = new Sale();
     SaleDao dao = new SaleDao();
-    FrmInicio view = new FrmInicio();
+    FrmPrincipalView view = new FrmPrincipalView();
     DetailSale detail = new DetailSale();
     DefaultTableModel model = new DefaultTableModel();
     
-    public SaleController(FrmInicio view){
+    public SaleController(FrmPrincipalView view){
        this.view = view;
        this.view.generateSaleBtn.addActionListener(this);
+       this.view.cancelSaleBtn.addActionListener(this);
        
     }
 
@@ -55,6 +56,10 @@ public class SaleController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view.generateSaleBtn){
             validateSale();
+        }
+        
+        if(e.getSource() == view.cancelSaleBtn){
+            cancelSale();
         }
     }
 
@@ -119,6 +124,11 @@ public class SaleController implements ActionListener{
         }
     }
     
+    private void cancelSale(){
+        cleanField();
+        JOptionPane.showMessageDialog(view, "Se ha cancelado la venta");
+    }
+    
     private void cleanField(){
         view.cantidadNum.setValue(0);
         view.clientIdTxt.setText("");
@@ -149,7 +159,6 @@ public class SaleController implements ActionListener{
             Document document = new Document();
             PdfWriter.getInstance(document, fileOutputStream);
             document.open();
-            
 
             Paragraph dateParagraph = new Paragraph();
             Font negrita = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.BLUE);
@@ -163,8 +172,6 @@ public class SaleController implements ActionListener{
             float[] headerColumn = new float[]{20f, 50f, 30f};
             headerTable.setWidths(headerColumn);
             headerTable.setHorizontalAlignment(Element.ALIGN_LEFT);
-
-           
 
             String storeType = "Tienda de abarrotes";
             String storeName = "El Rodri";
@@ -246,14 +253,14 @@ public class SaleController implements ActionListener{
 
             Paragraph singParagraph = new Paragraph();
             singParagraph.add(Chunk.NEWLINE);
-            singParagraph.add("Cancelación y Firma\n\n");
+            singParagraph.add("\n\nCancelación y Firma\n\n");
             singParagraph.add("------------------------");
             singParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(singParagraph);
 
             Paragraph messageParagraph = new Paragraph();
             messageParagraph.add(Chunk.NEWLINE);
-            messageParagraph.add("Gracia pos su Compra");
+            messageParagraph.add("Gracias por su Compra");
             messageParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(messageParagraph);
             document.close();

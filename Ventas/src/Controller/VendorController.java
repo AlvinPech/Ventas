@@ -49,22 +49,27 @@ public class VendorController implements ActionListener{
         String telephone = vendorView.telVendorTxt.getText();
         String mark = vendorView.markVendorTxt.getText();
         
-        vendor.setName(name);
-        vendor.setAddress(adress);
-        vendor.setTelephone(telephone);
-        vendor.setMark(mark);
-        
-        
-        int response = vendorDao.addVen(vendor);
-        
-        if(response == 1){
-            JOptionPane.showMessageDialog(vendorView, "Proveedor agregado con exito");
+        if(name.equals("") || adress.equals("") || telephone.equals("") || mark.equals("")){
+            JOptionPane.showMessageDialog(vendorView, "No deje campos vacios");
         }else{
-            JOptionPane.showMessageDialog(vendorView, "Error de agregacion");
+            vendor.setName(name);
+            vendor.setAddress(adress);
+            vendor.setTelephone(telephone);
+            vendor.setMark(mark);
+
+            int response = vendorDao.addVen(vendor);
+
+            if(response == 1){
+                JOptionPane.showMessageDialog(vendorView, "Proveedor agregado con exito");
+                cleanFielTable();
+            }else{
+                JOptionPane.showMessageDialog(vendorView, "Error de agregacion");
+            }
         }
     }
 
     private void listVendor(JTable vendorTable) {
+        cleanFielTable();
         model = (DefaultTableModel) vendorTable.getModel();
         ArrayList<Vendor> listData = vendorDao.listVen();
         Object[] object = new Object[5];
@@ -78,5 +83,21 @@ public class VendorController implements ActionListener{
         }
         
         vendorView.vendorTable.setModel(model);
+    }
+
+    private void cleanFielTable(){
+        vendorView.dirVendorTxt.setText("");
+        vendorView.idVendorTxt.setText("");
+        vendorView.markVendorTxt.setText("");
+        vendorView.nameVendorTxt.setText("");
+        vendorView.telVendorTxt.setText("");
+        
+        model = (DefaultTableModel) vendorView.vendorTable.getModel();
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            model.removeRow(i);
+            i = i - 1;
+        }
+        
     }
 }

@@ -7,7 +7,7 @@ package Controller;
 
 import Dao.SaleInfoDao;
 import Model.Sale;
-import View.FrmInicio;
+import View.FrmPrincipalView;
 import View.FrmSaleInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SaleInfoController implements ActionListener {
     FrmSaleInfo infoView = new FrmSaleInfo();
-    FrmInicio principalView = new FrmInicio();
+    FrmPrincipalView principalView = new FrmPrincipalView();
     SaleInfoDao dao = new SaleInfoDao();
     DefaultTableModel model = new DefaultTableModel();
     double totalAmount;
@@ -34,13 +34,14 @@ public class SaleInfoController implements ActionListener {
         listDates();
     }
     
-    public SaleInfoController(FrmInicio view){
+    public SaleInfoController(FrmPrincipalView view){
         this.principalView = view;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == infoView.findSaleBtn){
+            cleanFieldTable();
             String firstDate = infoView.fromCombo.getSelectedItem().toString();
             String secondDate = infoView.toCombo.getSelectedItem().toString();
             listSale(infoView.saleTable, firstDate, secondDate);
@@ -48,12 +49,23 @@ public class SaleInfoController implements ActionListener {
         }
         
         if(e.getSource() == infoView.todaySaleBtn){
+            cleanFieldTable();
             String firstDate = principalView.dateTxt.getText();
             String secondDate = principalView.dateTxt.getText();
             listSale(infoView.saleTable, firstDate, secondDate);
             calculateTotal();
         }
         
+    }
+    
+    private void cleanFieldTable() {
+        //Clean purchase table
+        model = (DefaultTableModel) infoView.saleTable.getModel();
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            model.removeRow(i);
+            i = i - 1;
+        }
     }
     
     private void listDates(){
