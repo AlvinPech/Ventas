@@ -5,7 +5,6 @@
  */
 package model;
 
-import model.Conexion;
 import java.sql.Connection;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

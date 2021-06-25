@@ -25,24 +25,15 @@ public class Conexion {
     {
       try {
            
-           //Cargamos el Driver MySQL
            Class.forName("com.mysql.cj.jdbc.Driver");
            conect = DriverManager.getConnection(url,login,password);
-           //System.out.print("Se ha establecido una conexión a la Base de Datos "+url+" "+login +" \n");
-           //Cargamos el Driver Access
-           //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-           //Conectar en red base 
-           //String strConect = "jdbc:odbc:Driver=Microsoft Access Driver (*.mdb);DBQ=//servidor/bd_cw/cw.mdb";
-           //Conectar Localmente
-           //String strConect = "jdbc:odbc:Driver=Microsoft Access Driver (*.mdb);DBQ=D:/cwnetbeans/cw.mdb";
-          //conect = DriverManager.getConnection(strConect,"",""); 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error "+e);
         }
         System.out.println(""+conect);
         return conect;
       }
-   public void cerrar(){
+   public void close(){
     try {
         conect.close();
         System.out.print("La Base de Datos esta cerrada \n");
