@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author alvin
@@ -16,6 +18,8 @@ public class FrmProfits extends javax.swing.JFrame {
      */
     public FrmProfits() {
         initComponents();
+        findDateBtn.setIcon(new ImageIcon(getClass().getResource("/img/buscar (2).png")));
+        calculateProfitBtn.setIcon(new ImageIcon(getClass().getResource("/img/dinero.png")));
     }
 
     /**
@@ -75,7 +79,6 @@ public class FrmProfits extends javax.swing.JFrame {
 
         jLabel6.setText("Hasta:");
 
-        findDateBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png")); // NOI18N
         findDateBtn.setText("Buscar");
 
         fromTxt.setEditable(false);
@@ -152,7 +155,6 @@ public class FrmProfits extends javax.swing.JFrame {
 
         profitTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        calculateProfitBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/dinero.png")); // NOI18N
         calculateProfitBtn.setText("Calcular");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -206,7 +208,7 @@ public class FrmProfits extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 549, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(211, 211, 211)

@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author alvin
@@ -16,6 +18,8 @@ public class FrmVendor extends javax.swing.JFrame {
      */
     public FrmVendor() {
         initComponents();
+        saveVendorBtn.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
+        listVendorBtn.setIcon(new ImageIcon(getClass().getResource("/img/aceptar16.png")));
     }
 
     /**
@@ -73,10 +77,8 @@ public class FrmVendor extends javax.swing.JFrame {
 
         dirVendorTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        saveVendorBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/agregar.png")); // NOI18N
         saveVendorBtn.setText("Agregar");
 
-        listVendorBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/aceptar16.png")); // NOI18N
         listVendorBtn.setText("Listar");
         listVendorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,9 +148,8 @@ public class FrmVendor extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(markVendorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(16, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(listVendorBtn)
                         .addGap(30, 30, 30))))
         );

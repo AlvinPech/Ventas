@@ -52,11 +52,8 @@
         </Property>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="systemMenu">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/tools.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Sistema"/>
           </Properties>
           <SubComponents>
@@ -70,11 +67,8 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="salesMenu">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/nomina.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ventas"/>
           </Properties>
           <SubComponents>
@@ -99,9 +93,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="addClient">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/clientes.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
           <Events>
@@ -120,9 +111,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="vendorJMenu">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/proveedores.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
           </Properties>
           <Events>
@@ -141,9 +129,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="addProductItem">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/carrito.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Producto"/>
           </Properties>
           <Events>
@@ -210,14 +195,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanel1" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jPanel2" max="32767" attributes="0"/>
                               <Component id="jPanel5" pref="440" max="32767" attributes="0"/>
@@ -227,9 +209,9 @@
                               <Component id="jPanel7" max="32767" attributes="0"/>
                               <Component id="jPanel6" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -238,20 +220,20 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jPanel5" min="-2" pref="184" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -338,7 +320,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="productLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="prodIdTxt" min="-2" pref="61" max="-2" attributes="0"/>
@@ -365,7 +347,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="productLabel" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="buscarProd" max="32767" attributes="0"/>
@@ -377,7 +359,7 @@
                           <Component id="cantidadNum" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="AgregarProd" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -401,20 +383,12 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="buscarProd">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png"/>
-                </Property>
-              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="AgregarProd">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/agregar.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="AGREGAR PRODUCTO"/>
               </Properties>
               <Events>
@@ -439,11 +413,8 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="productLabel">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/carrito.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="DATOS PRODUCTO"/>
               </Properties>
             </Component>
@@ -483,7 +454,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="buscarClient" min="-2" pref="56" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel4" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                          <Component id="clientLabel" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -493,16 +464,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="buscarClient" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="73" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="clientNomTxt" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="clientIdTxt" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                              </Group>
+                      <Component id="clientLabel" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="clientNomTxt" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="clientIdTxt" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="buscarClient" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
@@ -542,20 +511,12 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="clientLabel">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/user-28623.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="DATOS CLIENTE"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="buscarClient">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png"/>
-                </Property>
-              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -775,13 +736,10 @@
             <Component class="javax.swing.JButton" name="cancelSaleBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="ff" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/cancelar16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="CANCELAR"/>
               </Properties>
@@ -792,13 +750,10 @@
             <Component class="javax.swing.JButton" name="generateSaleBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="8d" green="ff" red="0" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="96" red="33" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/impresora.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="GENERAR VENTA"/>
               </Properties>
@@ -827,9 +782,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="removeProductBtn">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/eliminar.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="QUITAR SELECCIONADO"/>
               </Properties>
               <AuxValues>

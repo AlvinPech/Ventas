@@ -11,6 +11,7 @@ import dao.SaleDao;
 import model.Conexion;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,6 +34,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
     public FrmPrincipalView() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        setIcons();
         getCalendar();
         getSerie();
     }
@@ -59,12 +61,12 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         buscarProd = new javax.swing.JButton();
         AgregarProd = new javax.swing.JButton();
         prodNomTxt = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        productLabel = new javax.swing.JLabel();
         cantidadNum = new javax.swing.JSpinner();
         jPanel5 = new javax.swing.JPanel();
         clientIdTxt = new javax.swing.JTextField();
         clientNomTxt = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        clientLabel = new javax.swing.JLabel();
         buscarClient = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,9 +82,9 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         totalTxt = new javax.swing.JTextField();
         removeProductBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        systemMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        salesMenu = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         addClient = new javax.swing.JMenu();
@@ -161,9 +163,6 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         prodIdTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
         prodIdTxt.setSelectionColor(new java.awt.Color(231, 239, 255));
 
-        buscarProd.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png")); // NOI18N
-
-        AgregarProd.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/agregar.png")); // NOI18N
         AgregarProd.setText("AGREGAR PRODUCTO");
         AgregarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,8 +175,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         prodNomTxt.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         prodNomTxt.setEnabled(false);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/carrito.png")); // NOI18N
-        jLabel5.setText("DATOS PRODUCTO");
+        productLabel.setText("DATOS PRODUCTO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -186,7 +184,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(productLabel)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(prodIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,7 +204,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(productLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscarProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,7 +214,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadNum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AgregarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGap(41, 41, 41))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -231,10 +229,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         clientNomTxt.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         clientNomTxt.setEnabled(false);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/user-28623.png")); // NOI18N
-        jLabel4.setText("DATOS CLIENTE");
-
-        buscarClient.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png")); // NOI18N
+        clientLabel.setText("DATOS CLIENTE");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -250,21 +245,20 @@ public class FrmPrincipalView extends javax.swing.JFrame {
                         .addComponent(clientNomTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buscarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(clientLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buscarClient)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(clientNomTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clientIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(clientLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(clientNomTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(clientIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buscarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -340,14 +334,12 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        cancelSaleBtn.setBackground(new java.awt.Color(255, 102, 102));
+        cancelSaleBtn.setBackground(new java.awt.Color(255, 255, 255));
         cancelSaleBtn.setForeground(new java.awt.Color(255, 0, 0));
-        cancelSaleBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/cancelar16.png")); // NOI18N
         cancelSaleBtn.setText("CANCELAR");
 
-        generateSaleBtn.setBackground(new java.awt.Color(0, 255, 141));
+        generateSaleBtn.setBackground(new java.awt.Color(255, 255, 255));
         generateSaleBtn.setForeground(new java.awt.Color(51, 150, 49));
-        generateSaleBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/impresora.png")); // NOI18N
         generateSaleBtn.setText("GENERAR VENTA");
 
         jLabel7.setText("TOTAL A PAGAR");
@@ -356,7 +348,6 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         totalTxt.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         totalTxt.setEnabled(false);
 
-        removeProductBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/eliminar.png")); // NOI18N
         removeProductBtn.setText("QUITAR SELECCIONADO");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -395,11 +386,9 @@ public class FrmPrincipalView extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(28, 28, 28))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -407,32 +396,31 @@ public class FrmPrincipalView extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(java.awt.SystemColor.textHighlight);
         jMenuBar1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
 
-        jMenu2.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/tools.png")); // NOI18N
-        jMenu2.setText("Sistema");
+        systemMenu.setText("Sistema");
 
         jMenuItem3.setText("Salir");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -440,12 +428,11 @@ public class FrmPrincipalView extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        systemMenu.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(systemMenu);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/nomina.png")); // NOI18N
-        jMenu1.setText("Ventas");
+        salesMenu.setText("Ventas");
 
         jMenuItem2.setText("Ventas realizadas");
         jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -458,7 +445,7 @@ public class FrmPrincipalView extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        salesMenu.add(jMenuItem2);
 
         jMenuItem1.setText("Utilidad semanal");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -466,11 +453,10 @@ public class FrmPrincipalView extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        salesMenu.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(salesMenu);
 
-        addClient.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/clientes.png")); // NOI18N
         addClient.setText("Cliente");
         addClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -488,7 +474,6 @@ public class FrmPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(addClient);
 
-        vendorJMenu.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/proveedores.png")); // NOI18N
         vendorJMenu.setText("Proveedores");
         vendorJMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -506,7 +491,6 @@ public class FrmPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(vendorJMenu);
 
-        addProductItem.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/carrito.png")); // NOI18N
         addProductItem.setText("Producto");
         addProductItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -637,18 +621,15 @@ public class FrmPrincipalView extends javax.swing.JFrame {
     public javax.swing.JButton cancelSaleBtn;
     public javax.swing.JSpinner cantidadNum;
     public javax.swing.JTextField clientIdTxt;
+    private javax.swing.JLabel clientLabel;
     public javax.swing.JTextField clientNomTxt;
     public javax.swing.JTextField dateTxt;
     public javax.swing.JButton generateSaleBtn;
     public javax.swing.JTextField idClientTxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -667,8 +648,11 @@ public class FrmPrincipalView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField prodIdTxt;
     public javax.swing.JTextField prodNomTxt;
+    private javax.swing.JLabel productLabel;
     public javax.swing.JButton removeProductBtn;
+    private javax.swing.JMenu salesMenu;
     public javax.swing.JTextField serieTxt;
+    private javax.swing.JMenu systemMenu;
     public javax.swing.JTable tablaProdVenta;
     public javax.swing.JTextField totalTxt;
     private javax.swing.JMenu vendorJMenu;
@@ -691,5 +675,22 @@ public class FrmPrincipalView extends javax.swing.JFrame {
             increment = increment + 1;
             serieTxt.setText(""+increment);
         }
+    }
+
+    private void setIcons() {
+        systemMenu.setIcon(new ImageIcon(getClass().getResource("/img/tools.png")));
+        salesMenu.setIcon(new ImageIcon(getClass().getResource("/img/nomina.png")));
+        addClient.setIcon(new ImageIcon(getClass().getResource("/img/clientes.png")));
+        vendorJMenu.setIcon(new ImageIcon(getClass().getResource("/img/proveedores.png")));
+        addProductItem.setIcon(new ImageIcon(getClass().getResource("/img/carrito.png")));
+        
+        clientLabel.setIcon(new ImageIcon(getClass().getResource("/img/user-28623.png")));
+        productLabel.setIcon(new ImageIcon(getClass().getResource("/img/carrito.png")));
+        AgregarProd.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
+        cancelSaleBtn.setIcon(new ImageIcon(getClass().getResource("/img/cancelar16.png")));
+        generateSaleBtn.setIcon(new ImageIcon(getClass().getResource("/img/impresora.png")));
+        removeProductBtn.setIcon(new ImageIcon(getClass().getResource("/img/eliminar.png")));
+        buscarClient.setIcon(new ImageIcon(getClass().getResource("/img/buscar (2).png")));
+        buscarProd.setIcon(new ImageIcon(getClass().getResource("/img/buscar (2).png")));
     }
 }

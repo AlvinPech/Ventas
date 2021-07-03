@@ -1,6 +1,7 @@
 package view;
 
 import controller.ProductController;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,6 +20,8 @@ public class FrmProduct extends javax.swing.JFrame {
      */
     public FrmProduct() {
         initComponents();
+        guardarProductoBtn.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
+        listarProductoBtn.setIcon(new ImageIcon(getClass().getResource("/img/aceptar16.png")));
     }
 
     /**
@@ -75,10 +78,8 @@ public class FrmProduct extends javax.swing.JFrame {
 
         cantProductTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        guardarProductoBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/agregar.png")); // NOI18N
         guardarProductoBtn.setText("Agregar");
 
-        listarProductoBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/aceptar16.png")); // NOI18N
         listarProductoBtn.setText("Listar");
         listarProductoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +169,7 @@ public class FrmProduct extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

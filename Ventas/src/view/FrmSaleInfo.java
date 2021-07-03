@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,8 @@ public class FrmSaleInfo extends javax.swing.JFrame {
      */
     public FrmSaleInfo() {
         initComponents();
+        findSaleBtn.setIcon(new ImageIcon(getClass().getResource("/img/buscar (2).png")));
+        todaySaleBtn.setIcon(new ImageIcon(getClass().getResource("/img/dinero.png")));
         
     }
 
@@ -71,10 +74,8 @@ public class FrmSaleInfo extends javax.swing.JFrame {
             }
         });
 
-        findSaleBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png")); // NOI18N
         findSaleBtn.setText("Buscar");
 
-        todaySaleBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/dinero.png")); // NOI18N
         todaySaleBtn.setText("Venta de hoy");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

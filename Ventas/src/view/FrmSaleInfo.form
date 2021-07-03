@@ -180,9 +180,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="findSaleBtn">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/buscar (2).png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <AuxValues>
@@ -191,9 +188,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="todaySaleBtn">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/dinero.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Venta de hoy"/>
               </Properties>
               <AuxValues>

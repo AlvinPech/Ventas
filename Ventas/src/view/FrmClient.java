@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author alvin
@@ -16,6 +18,9 @@ public class FrmClient extends javax.swing.JFrame {
      */
     public FrmClient() {
         initComponents();
+        saveClientBtn.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
+        listClientBtn.setIcon(new ImageIcon(getClass().getResource("/img/aceptar16.png")));
+
     }
 
     /**
@@ -68,10 +73,8 @@ public class FrmClient extends javax.swing.JFrame {
 
         nomClientTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        saveClientBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/agregar.png")); // NOI18N
         saveClientBtn.setText("Agregar");
 
-        listClientBtn.setIcon(new javax.swing.ImageIcon("/Users/alvin/Desktop/Git/Rene/Ventas/Ventas/img/aceptar16.png")); // NOI18N
         listClientBtn.setText("Listar");
         listClientBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +192,7 @@ public class FrmClient extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
